@@ -46,5 +46,6 @@
         "streambuf": "cpp",
         "typeinfo": "cpp"
     },
+    //修改为的make构建工具路径
     "cmake.cmakePath": "/home/ubuntu/project/anaconda3/bin/cmake"
 }

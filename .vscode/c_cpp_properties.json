@@ -10,6 +10,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
+            //修改为你的编译器路径
             "compilerPath": "/home/ubuntu/project/anaconda3/bin/g++",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
