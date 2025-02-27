@@ -199,7 +199,73 @@ void WorkerManager::show_Emp(){
 }
 
 void WorkerManager::del_Emp(){
-    
+    cout << "输入要删除的员工号：" << endl;
+    int id;
+    cin >> id;
+    int index = IsExist(id);
+    if(index == -1){
+        cout << "该员工不存在" << endl;
+    }else{
+        for(int i = index; i < this->m_EmpNum-1; i++)
+            this->m_EmpArray[i] = this->m_EmpArray[i+1];
+        this->m_EmpNum--;
+        this->save();
+        cout << "删除成功" << endl;
+    }
+    this->pause();
+    this->clear();
+}
+
+void WorkerManager::mod_Emp(){
+    cout << "输入要修改的员工号：";
+    int id;
+    string name;
+    int dId;
+    cin >> id;
+    int index = IsExist(id);
+    if(index == -1){
+        cout << "该员工不存在" << endl;
+    }else{
+        cout << "请输入新的员工号：";
+        cin >> id; 
+        cout << "请输入新的员工名：";
+        cin >> name;
+        cout << "请输入新的类别：";
+        cin >> dId;
+        if(dId == this->m_EmpArray[index]->m_DeptId){
+            this->m_EmpArray[index]->m_Id = id;
+            this->m_EmpArray[index]->m_Name = name; 
+        }else{
+            delete this->m_EmpArray[index];
+            Worker *worker = NULL;
+            switch(dId){
+                case 1:
+                    worker = new Employee(id, name, dId);
+                    break;
+                case 2:
+                    worker = new Manager(id, name, dId);
+                    break;
+                case 3:
+                    worker = new Boss(id, name, dId);
+                    break;
+                default:
+                    break;
+            }
+            this->m_EmpArray[index] = worker;
+            this->save();
+            cout << "修改成功" << endl;
+        }
+    }
+    this->pause();
+    this->clear();
+}
+
+int WorkerManager::IsExist(int id){
+    for(int i = 0; i < this->m_EmpNum; i++){
+        if(id == this->m_EmpArray[i]->m_Id)
+            return i;
+    }
+    return -1;
 }
 
 void WorkerManager::save(){
