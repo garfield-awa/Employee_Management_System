@@ -25,6 +25,7 @@
                 }
             ],
             "preLaunchTask":"Build",
+             //修改为你的调试器路径
             "miDebuggerPath": "/home/ubuntu/project/anaconda3/bin/gdb"
         }
     ]
