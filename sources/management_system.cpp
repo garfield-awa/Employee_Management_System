@@ -13,7 +13,7 @@ int main(){
     WorkerManager vm;
     //vm.showMenu();
     int choice;
-    
+    int test;
     while(true){
         vm.clear();
         vm.showMenu();
