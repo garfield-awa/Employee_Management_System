@@ -30,11 +30,13 @@ class WorkerManager
         void show_Emp();
         void del_Emp();
         void mod_Emp();
+        void find_Emp();
         int IsExist(int id);
 
         //基本文件操作
         void save();
         void read();
+        void clean();
 
         //其他操作
         void pause();
