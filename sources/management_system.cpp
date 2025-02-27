@@ -7,41 +7,26 @@
 
 using namespace std;
 
-void test01(){
-    
-    Worker * worker = NULL;
-    
-    worker = new Employee(1, "张三", 1);
-    worker->showInfo();
-    delete worker;
-   
-    worker = new Manager(2, "李四", 2);
-    worker->showInfo();
-    delete worker;
-
-    worker = new Boss(3, "王五", 3);
-    worker->showInfo();
-    delete worker;
-}
-
 
 int main(){
-    test01();
 
-    /*
     WorkerManager vm;
-    vm.showMenu();
+    //vm.showMenu();
     int choice;
     
     while(true){
+        vm.clear();
+        vm.showMenu();
         cout << "请输入选择" << endl;
         cin >> choice;
         switch(choice){
             case 0:
                 vm.exitSystem();
             case 1:
+                vm.add_Emp();
                 break;
             case 2:
+                vm.show_Emp();
                 break;
             case 3:
                 break;
@@ -53,5 +38,4 @@ int main(){
                 break;
         }
     }
-    */
 }
