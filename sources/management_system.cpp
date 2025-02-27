@@ -35,8 +35,10 @@ int main(){
                 vm.mod_Emp();
                 break;
             case 5:
+                vm.find_Emp();
                 break;
             case 6:
+                vm.clean();
                 break;
         }
     }

@@ -21,23 +21,21 @@ WorkerManager::WorkerManager()
 
  void WorkerManager::showMenu(){
     cout << "****************************" << endl;
-    cout << "*          欢迎使用职工管理系统！         *" << endl;
+    cout << "*    欢迎使用职工管理系统！    *" << endl;
     cout << "****************************" << endl;
-    cout << "* 0.退出管理程序                   *" << endl;
+    cout << "* 0.退出管理程序             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 1.增加职工信息                   *" << endl;
+    cout << "* 1.增加职工信息             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 2.显示职工信息                   *" << endl;
+    cout << "* 2.显示职工信息             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 3.删除离职职工                   *" << endl;
+    cout << "* 3.删除离职职工             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 4.修改职工信息                   *" << endl;
+    cout << "* 4.修改职工信息             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 5.查找职工信息                   *" << endl;
+    cout << "* 5.查找职工信息             *" << endl;
     cout << "****************************" << endl;
-    cout << "* 6.按照编号排序                   *" << endl;
-    cout << "****************************" << endl;
-    cout << "* 7.清空所有文档                   *" << endl;
+    cout << "* 6.清空所有文档             *" << endl;
     cout << "****************************" << endl;
     cout << endl;
 }
@@ -260,6 +258,22 @@ void WorkerManager::mod_Emp(){
     this->clear();
 }
 
+void WorkerManager::find_Emp(){
+    cout << "输入要查找的员工号：";
+    int id;
+    cin >> id;
+    int index = IsExist(id);
+    if(index == -1){
+        cout << "该员工不存在" << endl;
+    }else{
+        cout << "员工号" << this->m_EmpArray[index]->m_Id;
+        cout << "员工姓名" << this->m_EmpArray[index]->m_Name;
+        cout << "岗位" << this->m_EmpArray[index]->getDeptName() << endl;
+    }
+    this->pause();
+    this->clear();
+}
+
 int WorkerManager::IsExist(int id){
     for(int i = 0; i < this->m_EmpNum; i++){
         if(id == this->m_EmpArray[i]->m_Id)
@@ -294,6 +308,32 @@ void WorkerManager::read(){
     }else{
 
     }
+}
+
+void WorkerManager::clean(){
+    cout << "警告！这将会导致所有员工信息丢失！继续的话请输入1：";
+    int ans;
+    cin >> ans;
+    if(ans != 1){
+        cout << "放弃清空" << endl;
+    }else{
+        ofstream ofs(FILENAME, ios::trunc);
+        ofs.close();
+
+        if(this->m_EmpArray != NULL){
+            for(int i = 0; i < this->m_EmpNum; i++){
+                delete this->m_EmpArray[i];
+                this->m_EmpArray[i] = NULL;
+            }
+            this->m_EmpNum = 0;
+            delete[] this->m_EmpArray;
+            this->m_EmpArray = NULL;
+            this->m_FileIsEmpty = true;
+        }
+        cout << "清除完成" << endl;
+    }
+    this->pause();
+    this->clear();
 }
 
 
