@@ -11,9 +11,5 @@ public:
 
     string getDeptName();
 
-    int m_Id;
-    string m_Name;
-    int m_DeptId;
-
 };
 
