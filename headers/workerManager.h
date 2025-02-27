@@ -29,8 +29,8 @@ class WorkerManager
         void add_Emp();
         void show_Emp();
         void del_Emp();
-        
-        
+        void mod_Emp();
+        int IsExist(int id);
 
         //基本文件操作
         void save();

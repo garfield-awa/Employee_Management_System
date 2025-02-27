@@ -29,8 +29,10 @@ int main(){
                 vm.show_Emp();
                 break;
             case 3:
+                vm.del_Emp();
                 break;
             case 4:
+                vm.mod_Emp();
                 break;
             case 5:
                 break;
